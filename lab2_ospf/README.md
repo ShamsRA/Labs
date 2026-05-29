@@ -47,7 +47,8 @@ host-интерфейсы оставить passive
 ping между loopback-адресами
 ping между host-сетями
 
-<img width="1413" height="1192" alt="CLOS_arch" src="https://github.com/user-attachments/assets/9a204d0d-70a9-4a54-b3eb-3a0e20ecc1d4" />
+<img width="1377" height="1202" alt="OSPF" src="https://github.com/user-attachments/assets/32a1836a-6bf4-49b7-bb8e-b4039b662852" />
+
 
 
 ## 4. Адрессное пронстранство 
