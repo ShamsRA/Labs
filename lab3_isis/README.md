@@ -1,6 +1,6 @@
 # Распределение адресного пронстранства 
 ## 1. План работ
-Настроить OSPF для Underlay сети.
+Настроить ISIS для Underlay сети.
 ## 2. Архитектура сети
 Используется двухуровневая CLOS архитектура:
 
@@ -19,35 +19,35 @@ Host2
 Host3
 Host4
 ## 3. План работ
-### 3.1 Собрать CLOS-схему в PNETLab:
-Spine1, Spine2
-Leaf1, Leaf2, Leaf3
-Host1–Host4
+### 3.1 Топология
+2×Spine (S1, S2), 3×Leaf (L1–L3), 4×Host.
+Каждый leaf подключен к обоим spine (CLOS).
 
-### 3.3 Назначить IP-адреса:
-/31 на point-to-point линках Spine–Leaf
-/32 на Loopback0
-/24 для пользовательских VLAN-сетей
+### 3.2 Адресация
+P2P линкам: /31
+Loopback: /32
+Хостовые VLAN: /24
 
-### 3.4 Включить L3-маршрутизацию на Arista:
+### 3.3 Базовая L3-настройка
 ip routing
-no switchport на routed-интерфейсах
-Настроить VLAN/SVI на leaf-коммутаторах.
+Аплинки: no switchport
+SVI на leaf
 
-### 3.5 Настроить OSPF underlay:
-process ID: 1
-area: 0.0.0.0
-loopback использовать как router-id
-spine-leaf интерфейсы сделать активными OSPF-интерфейсами
-host-интерфейсы оставить passive
+### 3.4 IS-IS underlay
+Процесс: UNDERLAY
+Тип: level-2
+Обязательно: address-family ipv4 unicast
+Интерфейсы spine↔leaf: isis network point-to-point
+Включение на интерфейсах: isis enable UNDERLAY
+Анонс сетей: redistribute connected
 
-### 3.6 Проверить:
-соседства OSPF
-маршруты OSPF
-ping между loopback-адресами
-ping между host-сетями
+### 3.5 Проверка
+show isis neighbors
+show ip route isis
+Ping loopback↔loopback, host↔host
 
-<img width="1377" height="1202" alt="OSPF" src="https://github.com/user-attachments/assets/32a1836a-6bf4-49b7-bb8e-b4039b662852" />
+<img width="1439" height="1220" alt="Clos_arch" src="https://github.com/user-attachments/assets/f995e74a-963d-4300-bbc0-2e9dc1dbded9" />
+
 
 
 
@@ -98,88 +98,85 @@ ping между host-сетями
 ## 5. Config
 ### 5.1 Spine 1 (Spine 2 - аналогично)
 enable
-configure terminal
+conf t
 
 hostname Spine1
 ip routing
 
+router isis UNDERLAY
+   net 49.0001.0111.1111.1111.00
+   is-type level-2
+   address-family ipv4 unicast
+      redistribute connected
+
 interface Ethernet1
-   description TO-Leaf1
    no switchport
    ip address 192.11.1.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   isis enable UNDERLAY
+   isis network point-to-point
+   no shut
 
 interface Ethernet2
-   description TO-Leaf2
    no switchport
    ip address 192.11.2.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   isis enable UNDERLAY
+   isis network point-to-point
+   no shut
 
 interface Ethernet3
-   description TO-Leaf3
    no switchport
    ip address 192.11.3.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   isis enable UNDERLAY
+   isis network point-to-point
+   no shut
 
 interface Loopback0
    ip address 11.11.11.11/32
-   ip ospf area 0.0.0.0
-
-router ospf 1
-   router-id 11.11.11.11
-   passive-interface default
-   no passive-interface Ethernet1
-   no passive-interface Ethernet2
-   no passive-interface Ethernet3
+   isis enable UNDERLAY
 
 end
-write memory
+wr
 
 ### 5.2 Leaf1 (Остальные лифы аналогично)
-enable
-configure terminal
+conf t
 
-hostname Spine2
+hostname Leaf1
 ip routing
 
+router isis UNDERLAY
+   net 49.0001.0001.0001.0001.00
+   is-type level-2
+   address-family ipv4 unicast
+      redistribute connected
+
 interface Ethernet1
-   description TO-Leaf1
    no switchport
-   ip address 192.22.1.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   ip address 192.11.1.1/31
+   isis enable UNDERLAY
+   isis network point-to-point
 
 interface Ethernet2
-   description TO-Leaf2
    no switchport
-   ip address 192.22.2.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   ip address 192.22.1.1/31
+   isis enable UNDERLAY
+   isis network point-to-point
+
+vlan 10
 
 interface Ethernet3
-   description TO-Leaf3
-   no switchport
-   ip address 192.22.3.0/31
-   ip ospf network point-to-point
-   mtu 1500
-   no shutdown
+   switchport access vlan 10
+
+interface Vlan10
+   ip address 192.168.1.1/24
+   isis enable UNDERLAY
 
 interface Loopback0
-   ip address 22.22.22.22/32
-   ip ospf area 0.0.0.0
+   ip address 1.1.1.1/32
+   isis enable UNDERLAY
 
-router ospf 1
-   router-id 22.22.22.22
-   passive-interface default
-   no passive-interface Ethernet1
+end
+wr
+
    no passive-interface Ethernet2
    no passive-interface Ethernet3
 
