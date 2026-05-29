@@ -96,6 +96,7 @@ ping между host-сетями
 | Host4 | 192.168.3.11 | 192.168.3.1 |
 
 ## 5. Config
+### 5.1 Spine 1 (Spine 2 - аналогично)
 enable
 configure terminal
 
@@ -140,6 +141,7 @@ router ospf 1
 end
 write memory
 
+### 5.2 Leaf1 (Остальные лифы аналогично)
 enable
 configure terminal
 
