@@ -96,4 +96,91 @@ ping между host-сетями
 | Host4 | 192.168.3.11 | 192.168.3.1 |
 
 ## 5. Config
+enable
+configure terminal
+
+hostname Spine1
+ip routing
+
+interface Ethernet1
+   description TO-Leaf1
+   no switchport
+   ip address 192.11.1.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Ethernet2
+   description TO-Leaf2
+   no switchport
+   ip address 192.11.2.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Ethernet3
+   description TO-Leaf3
+   no switchport
+   ip address 192.11.3.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Loopback0
+   ip address 11.11.11.11/32
+   ip ospf area 0.0.0.0
+
+router ospf 1
+   router-id 11.11.11.11
+   passive-interface default
+   no passive-interface Ethernet1
+   no passive-interface Ethernet2
+   no passive-interface Ethernet3
+
+end
+write memory
+
+enable
+configure terminal
+
+hostname Spine2
+ip routing
+
+interface Ethernet1
+   description TO-Leaf1
+   no switchport
+   ip address 192.22.1.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Ethernet2
+   description TO-Leaf2
+   no switchport
+   ip address 192.22.2.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Ethernet3
+   description TO-Leaf3
+   no switchport
+   ip address 192.22.3.0/31
+   ip ospf network point-to-point
+   mtu 1500
+   no shutdown
+
+interface Loopback0
+   ip address 22.22.22.22/32
+   ip ospf area 0.0.0.0
+
+router ospf 1
+   router-id 22.22.22.22
+   passive-interface default
+   no passive-interface Ethernet1
+   no passive-interface Ethernet2
+   no passive-interface Ethernet3
+
+end
+write memory
 
