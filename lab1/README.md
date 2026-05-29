@@ -35,7 +35,7 @@ Host4
 ### 3.2 Настроить:
 
 loopback интерфейсы
-p2p линki между Spine и Leaf
+p2p линки между Spine и Leaf
 VLAN и SVI для хостов
 
 <img width="1413" height="1192" alt="CLOS_arch" src="https://github.com/user-attachments/assets/9a204d0d-70a9-4a54-b3eb-3a0e20ecc1d4" />
