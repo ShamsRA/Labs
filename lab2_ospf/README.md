@@ -1,6 +1,6 @@
 # Распределение адресного пронстранства 
 ## 1. План работ
-Собрать схему CLOS и распределить адресное пространство.
+Настроить OSPF для Underlay сети.
 ## 2. Архитектура сети
 Используется двухуровневая CLOS архитектура:
 
@@ -19,24 +19,33 @@ Host2
 Host3
 Host4
 ## 3. План работ
-### 3.1 Развертывание топологии
+### 3.1 Собрать CLOS-схему в PNETLab:
+Spine1, Spine2
+Leaf1, Leaf2, Leaf3
+Host1–Host4
 
-Создать в PNETLab:
+### 3.3 Назначить IP-адреса:
+/31 на point-to-point линках Spine–Leaf
+/32 на Loopback0
+/24 для пользовательских VLAN-сетей
 
-2 Spine
-3 Leaf
-4 Host
+### 3.4 Включить L3-маршрутизацию на Arista:
+ip routing
+no switchport на routed-интерфейсах
+Настроить VLAN/SVI на leaf-коммутаторах.
 
-Соединить:
+### 3.5 Настроить OSPF underlay:
+process ID: 1
+area: 0.0.0.0
+loopback использовать как router-id
+spine-leaf интерфейсы сделать активными OSPF-интерфейсами
+host-интерфейсы оставить passive
 
-каждый Leaf со всеми Spine
-хосты с Leaf коммутаторами
-
-### 3.2 Настроить:
-
-loopback интерфейсы
-p2p линки между Spine и Leaf
-VLAN и SVI для хостов
+### 3.6 Проверить:
+соседства OSPF
+маршруты OSPF
+ping между loopback-адресами
+ping между host-сетями
 
 <img width="1413" height="1192" alt="CLOS_arch" src="https://github.com/user-attachments/assets/9a204d0d-70a9-4a54-b3eb-3a0e20ecc1d4" />
 
