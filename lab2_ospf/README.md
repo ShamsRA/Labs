@@ -104,25 +104,28 @@ hostname Spine1
 ip routing
 
 interface Ethernet1
-   description TO-Leaf1
+   description TO-Leaf1-Eth1
    no switchport
    ip address 192.11.1.0/31
+   ip ospf area 0.0.0.0
    ip ospf network point-to-point
    mtu 1500
    no shutdown
 
 interface Ethernet2
-   description TO-Leaf2
+   description TO-Leaf2-Eth1
    no switchport
    ip address 192.11.2.0/31
+   ip ospf area 0.0.0.0
    ip ospf network point-to-point
    mtu 1500
    no shutdown
 
 interface Ethernet3
-   description TO-Leaf3
+   description TO-Leaf3-Eth1
    no switchport
    ip address 192.11.3.0/31
+   ip ospf area 0.0.0.0
    ip ospf network point-to-point
    mtu 1500
    no shutdown
@@ -141,48 +144,155 @@ router ospf 1
 end
 write memory
 
+
 ### 5.2 Leaf1 (Остальные лифы аналогично)
 enable
 configure terminal
 
-hostname Spine2
+hostname Leaf1
 ip routing
 
+vlan 10
+   name HOST1_NET
+
 interface Ethernet1
-   description TO-Leaf1
+   description TO-Spine1-Eth1
    no switchport
-   ip address 192.22.1.0/31
+   ip address 192.11.1.1/31
+   ip ospf area 0.0.0.0
    ip ospf network point-to-point
    mtu 1500
    no shutdown
 
 interface Ethernet2
-   description TO-Leaf2
+   description TO-Spine2-Eth1
    no switchport
-   ip address 192.22.2.0/31
+   ip address 192.22.1.1/31
+   ip ospf area 0.0.0.0
    ip ospf network point-to-point
    mtu 1500
    no shutdown
 
 interface Ethernet3
-   description TO-Leaf3
-   no switchport
-   ip address 192.22.3.0/31
-   ip ospf network point-to-point
-   mtu 1500
+   description TO-Host1
+   switchport
+   switchport mode access
+   switchport access vlan 10
+   spanning-tree portfast
+   no shutdown
+
+interface Vlan10
+   description GW-HOST1
+   ip address 192.168.1.1/24
+   ip ospf area 0.0.0.0
    no shutdown
 
 interface Loopback0
-   ip address 22.22.22.22/32
+   ip address 1.1.1.1/32
    ip ospf area 0.0.0.0
 
 router ospf 1
-   router-id 22.22.22.22
+   router-id 1.1.1.1
    passive-interface default
    no passive-interface Ethernet1
    no passive-interface Ethernet2
-   no passive-interface Ethernet3
 
 end
 write memory
+## 6 Добавление BFD
+Делаем только на OSPF uplink-интерфейсах Spine–Leaf:
+BFD: ip ospf neighbor bfd
+BFD timers: bfd interval 200 min-rx 200 multiplier 3
+OSPF authentication: ip ospf authentication message-digest
+OSPF key: ip ospf message-digest-key 1 md5 0 OSPF_KEY_123
+
+## 7 Диагностика 
+### 7.1 Проверка OSPF-соседств 
+На Spine1
+
+<img width="637" height="143" alt="image" src="https://github.com/user-attachments/assets/b87aa3c9-b10e-49f2-90a9-6760a982def3" />
+
+На Spine2
+
+<img width="644" height="156" alt="Spine2_ospf" src="https://github.com/user-attachments/assets/a0f369f7-2512-4633-8ab4-a31f4a7aaae0" />
+
+Lef1
+
+<img width="644" height="125" alt="image" src="https://github.com/user-attachments/assets/541df297-476b-4afa-b140-d1f476e11ebd" />
+
+Lef2 
+
+<img width="650" height="113" alt="image" src="https://github.com/user-attachments/assets/a711013b-7173-4f4a-aaad-41c447de43da" />
+
+Leaf3
+
+<img width="650" height="128" alt="image" src="https://github.com/user-attachments/assets/069ca3bd-3b05-42ec-ae45-5c79c2faa421" />
+
+
+### 7.2 Проверка таблицы маршрутизации
+
+Spine1 
+
+<img width="488" height="229" alt="image" src="https://github.com/user-attachments/assets/4eb750ad-ce44-4378-a47b-0789f81427b0" />
+
+Spine 
+
+<img width="493" height="226" alt="image" src="https://github.com/user-attachments/assets/40af8f56-7590-49e0-be18-30aeecda422a" />
+
+Leaf1 
+
+<img width="500" height="262" alt="image" src="https://github.com/user-attachments/assets/bc7096b5-3f69-4f7d-97a7-ab4cc0c2569f" />
+
+Leaf2 
+
+<img width="508" height="265" alt="image" src="https://github.com/user-attachments/assets/0b9f1547-6a95-4a1b-97b3-1308888a3427" />
+
+Leaf3
+
+<img width="500" height="258" alt="image" src="https://github.com/user-attachments/assets/70c92252-df07-45a5-bc51-8ef4b2ee6077" />
+
+### 7.3 LSDB
+
+Spine1
+
+<img width="632" height="226" alt="image" src="https://github.com/user-attachments/assets/e2f0101a-806d-4b7d-b6d3-e45d0d2ceaba" />
+
+Spine2
+
+<img width="652" height="221" alt="image" src="https://github.com/user-attachments/assets/6a563bef-71f0-499e-8376-7d513ff38649" />
+
+Leaf1
+
+<img width="633" height="217" alt="image" src="https://github.com/user-attachments/assets/c43a69de-779d-468c-9b6d-509ecbfd8dbd" />
+
+Leaf2
+
+<img width="634" height="233" alt="image" src="https://github.com/user-attachments/assets/09f1863c-b8b5-4277-9dc3-02763f455b80" />
+
+Leaf3
+
+<img width="633" height="232" alt="image" src="https://github.com/user-attachments/assets/9b109321-1b69-4d9b-b6b7-15536b61de72" />
+
+### 7.4 Пинги OSPF
+
+Spine1
+
+<img width="627" height="678" alt="image" src="https://github.com/user-attachments/assets/5f4e9e39-b52a-403c-b013-85467138c597" />
+
+Spine2
+
+<img width="627" height="675" alt="image" src="https://github.com/user-attachments/assets/5bb1cc34-756c-4ca7-8380-e6af31ccdad9" />
+
+Leaf1
+
+<img width="691" height="711" alt="image" src="https://github.com/user-attachments/assets/217c9f51-ad21-44a2-b782-0f046e64ac88" />
+
+Leaf2 
+
+<img width="713" height="709" alt="image" src="https://github.com/user-attachments/assets/80781dcf-7cc2-4857-8361-196ac3b3ff2e" />
+
+Leaf3
+
+<img width="623" height="719" alt="image" src="https://github.com/user-attachments/assets/f5b4c1f5-7bc3-4891-88b9-93410414fbcd" />
+
 
