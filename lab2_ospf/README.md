@@ -229,4 +229,48 @@ Leaf3
 <img width="650" height="128" alt="image" src="https://github.com/user-attachments/assets/069ca3bd-3b05-42ec-ae45-5c79c2faa421" />
 
 
+### 7.2 Проверка таблицы маршрутизации
+
+Spine1 
+
+<img width="488" height="229" alt="image" src="https://github.com/user-attachments/assets/4eb750ad-ce44-4378-a47b-0789f81427b0" />
+
+Spine 
+
+<img width="493" height="226" alt="image" src="https://github.com/user-attachments/assets/40af8f56-7590-49e0-be18-30aeecda422a" />
+
+Leaf1 
+
+<img width="500" height="262" alt="image" src="https://github.com/user-attachments/assets/bc7096b5-3f69-4f7d-97a7-ab4cc0c2569f" />
+
+Leaf2 
+
+<img width="508" height="265" alt="image" src="https://github.com/user-attachments/assets/0b9f1547-6a95-4a1b-97b3-1308888a3427" />
+
+Leaf3
+
+<img width="500" height="258" alt="image" src="https://github.com/user-attachments/assets/70c92252-df07-45a5-bc51-8ef4b2ee6077" />
+
+### 7.3 LSDB
+
+Spine1
+
+<img width="632" height="226" alt="image" src="https://github.com/user-attachments/assets/e2f0101a-806d-4b7d-b6d3-e45d0d2ceaba" />
+
+Spine2
+
+<img width="652" height="221" alt="image" src="https://github.com/user-attachments/assets/6a563bef-71f0-499e-8376-7d513ff38649" />
+
+Leaf1
+
+<img width="633" height="217" alt="image" src="https://github.com/user-attachments/assets/c43a69de-779d-468c-9b6d-509ecbfd8dbd" />
+
+Leaf2
+
+<img width="634" height="233" alt="image" src="https://github.com/user-attachments/assets/09f1863c-b8b5-4277-9dc3-02763f455b80" />
+
+Leaf3
+
+<img width="633" height="232" alt="image" src="https://github.com/user-attachments/assets/9b109321-1b69-4d9b-b6b7-15536b61de72" />
+
 
