@@ -273,4 +273,26 @@ Leaf3
 
 <img width="633" height="232" alt="image" src="https://github.com/user-attachments/assets/9b109321-1b69-4d9b-b6b7-15536b61de72" />
 
+### 7.4 Пинги OSPF
+
+Spine1
+
+<img width="627" height="678" alt="image" src="https://github.com/user-attachments/assets/5f4e9e39-b52a-403c-b013-85467138c597" />
+
+Spine2
+
+<img width="627" height="675" alt="image" src="https://github.com/user-attachments/assets/5bb1cc34-756c-4ca7-8380-e6af31ccdad9" />
+
+Leaf1
+
+<img width="691" height="711" alt="image" src="https://github.com/user-attachments/assets/217c9f51-ad21-44a2-b782-0f046e64ac88" />
+
+Leaf2 
+
+<img width="713" height="709" alt="image" src="https://github.com/user-attachments/assets/80781dcf-7cc2-4857-8361-196ac3b3ff2e" />
+
+Leaf3
+
+<img width="623" height="719" alt="image" src="https://github.com/user-attachments/assets/f5b4c1f5-7bc3-4891-88b9-93410414fbcd" />
+
 
