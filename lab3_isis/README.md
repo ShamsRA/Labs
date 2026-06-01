@@ -183,3 +183,96 @@ wr
 end
 write memory
 
+## 6 Диагностика 
+
+### 6.1 Проверка соседства ISIS
+
+Spine1 
+
+<img width="876" height="101" alt="image" src="https://github.com/user-attachments/assets/c2ff7328-f1dc-4b25-845d-ddede7fb25c7" />
+
+Spine2
+
+<img width="673" height="158" alt="image" src="https://github.com/user-attachments/assets/2c9cbaa3-3fb8-4a8f-a6b9-6eba747dc358" />
+
+Leaf1
+
+<img width="876" height="86" alt="image" src="https://github.com/user-attachments/assets/5b9e2c38-c483-45a9-b3e8-cedcd20e03f1" />
+
+Leaf2
+
+<img width="875" height="85" alt="image" src="https://github.com/user-attachments/assets/d0352317-362d-442c-b143-11365044f471" />
+
+Leaf 3
+
+<img width="847" height="94" alt="image" src="https://github.com/user-attachments/assets/acaae2ca-a7c2-4a75-8842-a6f2fd8f0373" />
+
+
+### 6.2 Проверка маршрутов 
+
+Spine1 
+
+<img width="511" height="440" alt="image" src="https://github.com/user-attachments/assets/d63f935d-1209-49b7-b31e-9e9953add999" />
+
+Spine2
+
+<img width="541" height="445" alt="image" src="https://github.com/user-attachments/assets/a02f5507-2ba6-416e-8c99-9b54ea8aebd9" />
+
+Leaf1
+
+<img width="528" height="475" alt="image" src="https://github.com/user-attachments/assets/9fa13eea-c462-4e8b-9c48-78b97a8f0bd2" />
+
+Leaf2
+
+<img width="660" height="481" alt="image" src="https://github.com/user-attachments/assets/ca675240-9e60-40dc-8d33-77dfc3691504" />
+
+Leaf3
+
+<img width="538" height="472" alt="image" src="https://github.com/user-attachments/assets/882c2359-24ba-4fdd-997f-9b28b2d6360c" />
+
+
+### 6.3 LSDB
+
+Spine1
+
+<img width="536" height="177" alt="image" src="https://github.com/user-attachments/assets/e55df97e-b03d-40a2-a923-37f1f0a455cd" />
+
+
+Spine2
+
+<img width="534" height="178" alt="image" src="https://github.com/user-attachments/assets/e88b2830-6715-410d-9dd3-21c83bb00a62" />
+
+Leaf1
+
+<img width="523" height="181" alt="image" src="https://github.com/user-attachments/assets/589e13ad-6b14-456b-917f-090ba9ad1712" />
+
+
+Leaf2 
+
+<img width="540" height="187" alt="image" src="https://github.com/user-attachments/assets/8d867c3f-d906-4b9d-bc1a-b0ce048e8576" />
+
+Leaf3
+
+<img width="516" height="196" alt="image" src="https://github.com/user-attachments/assets/e6f27634-cf95-44cb-9d1a-a41967387502" />
+
+### 6.4 Ping
+
+Spine1
+
+<img width="700" height="766" alt="image" src="https://github.com/user-attachments/assets/0ff146e4-9570-4775-8571-c31ca92699b2" />
+
+Spine2
+<img width="645" height="768" alt="image" src="https://github.com/user-attachments/assets/f0cf33fe-d855-4970-ba13-bd928ea74847" />
+
+Leaf1
+
+<img width="618" height="722" alt="image" src="https://github.com/user-attachments/assets/4edb1ce0-4ddb-424a-b878-09c18e5a32cd" />
+
+Leaf2
+
+<img width="774" height="730" alt="image" src="https://github.com/user-attachments/assets/5e431523-dc65-4e03-a71e-b7d3d3883dbd" />
+
+
+Leaf3
+
+<img width="747" height="755" alt="image" src="https://github.com/user-attachments/assets/f9a6ec2e-96df-4e0b-a0c4-f6076456e049" />
