@@ -209,14 +209,23 @@ OSPF key: ip ospf message-digest-key 1 md5 0 OSPF_KEY_123
 ## 7 Диагностика 
 ### 7.1 Проверка OSPF-соседств 
 На Spine1
+
 <img width="637" height="143" alt="image" src="https://github.com/user-attachments/assets/b87aa3c9-b10e-49f2-90a9-6760a982def3" />
+
 На Spine2
+
 <img width="644" height="156" alt="Spine2_ospf" src="https://github.com/user-attachments/assets/a0f369f7-2512-4633-8ab4-a31f4a7aaae0" />
+
 Lef1
+
 <img width="644" height="125" alt="image" src="https://github.com/user-attachments/assets/541df297-476b-4afa-b140-d1f476e11ebd" />
+
 Lef2 
+
 <img width="650" height="113" alt="image" src="https://github.com/user-attachments/assets/a711013b-7173-4f4a-aaad-41c447de43da" />
+
 Leaf3
+
 <img width="650" height="128" alt="image" src="https://github.com/user-attachments/assets/069ca3bd-3b05-42ec-ae45-5c79c2faa421" />
 
 
