@@ -125,79 +125,51 @@ Ping loopback↔loopback, host↔host
 
 ## 6 Диагностика 
 
-### 6.1 
+### 6.1 Проверка маршрутов 
 
 Spine1 
 
+<img width="960" height="538" alt="bgp route " src="https://github.com/user-attachments/assets/5a9c53c1-8218-4310-baf1-b320e01e9746" />
 
 
 Spine2
 
-
-
-Leaf1
-
-af2
-
-
-
-Leaf 3
-
-
-
-
-### 6.2 Проверка маршрутов 
-
-Spine1 
-
-
-
-Spine2
-
+<img width="1030" height="532" alt="bgp route" src="https://github.com/user-attachments/assets/62c67cd4-9049-4072-91b9-572255ba53d6" />
 
 Leaf1
 
+<img width="974" height="549" alt="bgp route" src="https://github.com/user-attachments/assets/3cc4afa0-0369-4572-a946-f6b5e0cb0f89" />
 
 Leaf2
 
+<img width="967" height="525" alt="bgp route" src="https://github.com/user-attachments/assets/81db4d4a-6434-4112-8c07-9c998d4648f6" />
 
+Leaf3
 
+<img width="1004" height="520" alt="bgp routee" src="https://github.com/user-attachments/assets/730022a3-2ae3-49b6-a4aa-98331c32e741" />
 
-### 6.3 LSDB
+### 6.2 Ping
 
 Spine1
 
+<img width="610" height="575" alt="ping" src="https://github.com/user-attachments/assets/b95e1e2e-ca51-409a-8c74-ee3f166a52d0" />
 
 
 Spine2
 
+<img width="646" height="712" alt="ping" src="https://github.com/user-attachments/assets/a212c4ca-4763-4f79-bf61-c2f0d1136cbf" />
+
 
 Leaf1
 
+<img width="632" height="705" alt="ping" src="https://github.com/user-attachments/assets/1b6e277e-467b-49bf-92d8-94aa1733bc89" />
 
+Leaf2
 
-Leaf2 
-
+<img width="659" height="734" alt="ping" src="https://github.com/user-attachments/assets/cf01e7d4-aa5a-4143-abcc-1e0e8a7bcff0" />
 
 
 Leaf3
 
-
-
-### 6.4 Ping
-
-Spine1
-
-
-Spine2
-
-
-Leaf1
-
-
-Leaf2
-
-
-
-Leaf3
+<img width="606" height="705" alt="ping" src="https://github.com/user-attachments/assets/2ff1137f-a363-4e5e-bd67-fee686718170" />
 
