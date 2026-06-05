@@ -1,6 +1,31 @@
 # Распределение адресного пронстранства 
 ## 1. План работ
-Настроить eBGP для Underlay сети.
+Настроить eBGP в Underlay-сети для обеспечения IP-связности между всеми сетевыми устройствами фабрики
+
+Подготовить адресное пространство для Loopback-интерфейсов и point-to-point линков Spine–Leaf.
+Назначить каждому сетевому устройству уникальный BGP AS number.
+Включить маршрутизацию IPv4 на каждом устройстве командой ip routing.
+Настроить routed-интерфейсы между Spine и Leaf:
+перевести Ethernet-интерфейсы в L3-режим командой no switchport;
+назначить IP-адреса из /31-сетей;
+включить интерфейсы командой no shutdown.
+Настроить Loopback0 на каждом устройстве.
+Настроить eBGP-соседства:
+Spine1 с Leaf1, Leaf2, Leaf3;
+Spine2 с Leaf1, Leaf2, Leaf3.
+Анонсировать в BGP:
+Loopback0 каждого устройства;
+connected-сети Spine–Leaf.
+Включить BGP ECMP:
+maximum-paths 4;
+bgp bestpath as-path multipath-relax.
+Проверить:
+состояние интерфейсов;
+состояние BGP-соседств;
+наличие BGP-маршрутов;
+наличие маршрутов в routing table;
+IP-связность между Loopback0 всех сетевых устройств.
+
 ## 2. Архитектура сети
 Используется двухуровневая CLOS архитектура:
 
@@ -46,7 +71,7 @@ show isis neighbors
 show ip route isis
 Ping loopback↔loopback, host↔host
 
-<img width="1439" height="1220" alt="Clos_arch" src="https://github.com/user-attachments/assets/f995e74a-963d-4300-bbc0-2e9dc1dbded9" />
+<img width="1361" height="1224" alt="Arch" src="https://github.com/user-attachments/assets/d8cd80b5-4d89-4028-9288-285f9fdec8ed" />
 
 
 
