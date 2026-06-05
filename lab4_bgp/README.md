@@ -27,6 +27,7 @@
 
 ## 2. Архитектура сети
 Используется двухуровневая CLOS архитектура:
+<img width="1361" height="1224" alt="Arch" src="https://github.com/user-attachments/assets/d8cd80b5-4d89-4028-9288-285f9fdec8ed" />
 
 Spine уровень:
 Spine1
@@ -69,9 +70,6 @@ SVI на leaf
 show isis neighbors
 show ip route isis
 Ping loopback↔loopback, host↔host
-
-<img width="1361" height="1224" alt="Arch" src="https://github.com/user-attachments/assets/d8cd80b5-4d89-4028-9288-285f9fdec8ed" />
-
 
 
 
