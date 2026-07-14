@@ -47,18 +47,17 @@ P2P линкам: /31
 Loopback: /32
 Хостовые VLAN: /24
 
-### 3.3 Базовая L3-настройка
-ip routing
-Аплинки: no switchport
-SVI на leaf
+Underlay links
+| Линк         |           Spine |            Leaf |
+| ------------ | --------------: | --------------: |
+| Spine1–Leaf1 | `192.11.1.0/31` | `192.11.1.1/31` |
+| Spine1–Leaf2 | `192.11.2.0/31` | `192.11.2.1/31` |
+| Spine1–Leaf3 | `192.11.3.0/31` | `192.11.3.1/31` |
+| Spine2–Leaf1 | `192.22.1.0/31` | `192.22.1.1/31` |
+| Spine2–Leaf2 | `192.22.2.0/31` | `192.22.2.1/31` |
+| Spine2–Leaf3 | `192.22.3.0/31` | `192.22.3.1/31` |
 
-### 3.4 IS-IS underlay
-Процесс: UNDERLAY
-Тип: level-2
-Обязательно: address-family ipv4 unicast
-Интерфейсы spine↔leaf: isis network point-to-point
-Включение на интерфейсах: isis enable UNDERLAY
-Анонс сетей: redistribute connected
+
 
 ### 3.5 Проверка
 show isis neighbors
