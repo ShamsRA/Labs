@@ -21,7 +21,7 @@
 | Leaf2       | VTEP                  | `2.2.2.2/32`     | 65102 |
 | Leaf3       | VTEP                  | `3.3.3.3/32`     | 65103 |
 Используется двухуровневая CLOS архитектура:
-<img width="1361" height="1224" alt="Arch" src="https://github.com/user-attachments/assets/d8cd80b5-4d89-4028-9288-285f9fdec8ed" />
+<img width="1016" height="803" alt="image" src="https://github.com/user-attachments/assets/42d89bee-0f9f-480a-b59f-a71a6aa115e7" />
 
 Spine уровень:
 Spine1
