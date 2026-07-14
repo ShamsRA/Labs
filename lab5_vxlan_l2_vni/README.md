@@ -13,6 +13,13 @@
 8. Проверка L2-связанности между Host1 и Host2 через VXLAN
 
 ## 2. Архитектура сети
+| Устройство | Роль                  | Loopback0        | AS    |
+|-------------|-----------------------|------------------|-------|
+| Spine1      | Underlay/EVPN transit | `11.11.11.11/32` | 65001 |
+| Spine2      | Underlay/EVPN transit | `22.22.22.22/32` | 65002 |
+| Leaf1       | VTEP                  | `1.1.1.1/32`     | 65101 |
+| Leaf2       | VTEP                  | `2.2.2.2/32`     | 65102 |
+| Leaf3       | VTEP                  | `3.3.3.3/32`     | 65103 |
 Используется двухуровневая CLOS архитектура:
 <img width="1361" height="1224" alt="Arch" src="https://github.com/user-attachments/assets/d8cd80b5-4d89-4028-9288-285f9fdec8ed" />
 
