@@ -60,55 +60,21 @@ Underlay links
 
 
 ### 3.5 Проверка
-show isis neighbors
-show ip route isis
-Ping loopback↔loopback, host↔host
+Underlay
+show ip bgp summary
+show ip route 1.1.1.1
+show ip route 2.2.2.2
+show ip route 3.3.3.3
 
+EVPN Overlay
+show bgp evpn summary
 
+VXLAN
+show interfaces vxlan 1
+show vxlan vni
 
-## 4. Адрессное пронстранство 
-### 4.1 Loopback
-
-| Устройство | Адрес |
-| :--- | :--- |
-| Spine1 | 11.11.11.11/32 |
-| Spine2 | 22.22.22.22/32 |
-| Leaf1 | 1.1.1.1/32 |
-| Leaf2 | 2.2.2.2/32 |
-| Leaf3 | 3.3.3.3/32 |
-
-### 4.2 Spine1 <-> Leaf
-
-| Линк | Spine1 | Leaf |
-| :--- | :--- | :--- |
-| S1-L1 | 192.11.1.0/31 | 192.11.1.1/31 |
-| S1-L2 | 192.11.2.0/31 | 192.11.2.1/31 |
-| S1-L3 | 192.11.3.0/31 | 192.11.3.1/31 |
-
-### 4.3 Spine2 <-> Leaf
-
-| Линк | Spine2 | Leaf |
-| :--- | :--- | :--- |
-| S2-L1 | 192.22.1.0/31 | 192.22.1.1/31 |
-| S2-L2 | 192.22.2.0/31 | 192.22.2.1/31 |
-| S2-L3 | 192.22.3.0/31 | 192.22.3.1/31 |
-
-### 4.4 Host-сети
-
-| VLAN | Сеть | Gateway |
-| :--- | :--- | :--- |
-| 10 | 192.168.1.0/24 | 192.168.1.1 |
-| 20 | 192.168.2.0/24 | 192.168.2.1 |
-| 30 | 192.168.3.0/24 | 192.168.3.1 |
-
-### 4.5 Hosts
-
-| Host | IP | GW |
-| :--- | :--- | :--- |
-| Host1 | 192.168.1.10 | 192.168.1.1 |
-| Host2 | 192.168.2.10 | 192.168.2.1 |
-| Host3 | 192.168.3.10 | 192.168.3.1 |
-| Host4 | 192.168.3.11 | 192.168.3.1 |
+MAC/IP routes
+show bgp evpn route-type mac-ip
 
 ## 5. Config
 ### 5.1 Spine 1 (Spine 2 - аналогично)
