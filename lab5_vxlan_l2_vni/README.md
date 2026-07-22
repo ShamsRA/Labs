@@ -88,47 +88,84 @@ show bgp evpn route-type mac-ip
 
 Spine1 
 
-<img width="960" height="538" alt="bgp route " src="https://github.com/user-attachments/assets/5a9c53c1-8218-4310-baf1-b320e01e9746" />
-
-
-Spine2
-
-<img width="1030" height="532" alt="bgp route" src="https://github.com/user-attachments/assets/62c67cd4-9049-4072-91b9-572255ba53d6" />
-
-Leaf1
-
-<img width="974" height="549" alt="bgp route" src="https://github.com/user-attachments/assets/3cc4afa0-0369-4572-a946-f6b5e0cb0f89" />
-
-Leaf2
-
-<img width="967" height="525" alt="bgp route" src="https://github.com/user-attachments/assets/81db4d4a-6434-4112-8c07-9c998d4648f6" />
-
-Leaf3
-
-<img width="1004" height="520" alt="bgp routee" src="https://github.com/user-attachments/assets/730022a3-2ae3-49b6-a4aa-98331c32e741" />
-
-### 6.2 Ping
-
 Spine1
+Underlay eBGP-соседства с Leaf1, Leaf2 и Leaf3 находятся в состоянии Established.
+Маршруты до Loopback0 всех Leaf получены через BGP.
+EVPN-соседства с 1.1.1.1, 2.2.2.2 и 3.3.3.3 находятся в состоянии Established.
+Spine1 выполняет роль транзитного узла Underlay и EVPN control-plane.
 
-<img width="610" height="575" alt="ping" src="https://github.com/user-attachments/assets/b95e1e2e-ca51-409a-8c74-ee3f166a52d0" />
+<img width="724" height="332" alt="image" src="https://github.com/user-attachments/assets/695be591-a2cf-40a4-86bc-b2338efbdeb1" />
 
 
 Spine2
 
-<img width="646" height="712" alt="ping" src="https://github.com/user-attachments/assets/a212c4ca-4763-4f79-bf61-c2f0d1136cbf" />
+Spine2
+Routed-интерфейсы Ethernet1–Ethernet3 находятся в состоянии up/up.
+Underlay eBGP-соседства со всеми Leaf находятся в состоянии Established.
+Получены маршруты до Loopback0 всех Leaf.
+EVPN-соседства с Leaf1, Leaf2 и Leaf3 находятся в состоянии Established.
 
+<img width="705" height="329" alt="image" src="https://github.com/user-attachments/assets/57272ada-c27f-45e8-8909-b95113cb78bd" />
 
 Leaf1
 
-<img width="632" height="705" alt="ping" src="https://github.com/user-attachments/assets/1b6e277e-467b-49bf-92d8-94aa1733bc89" />
+Underlay eBGP-соседства с обоими Spine подняты.
+EVPN-соседства со Spine1 и Spine2 находятся в состоянии Established.
+Vxlan1 находится в состоянии up/up.
+VTEP-адрес Leaf1 — 1.1.1.1.
+VLAN10 сопоставлен с L2 VNI10010.
+MAC Host1 изучен локально через Ethernet3.
+MAC Host3 изучен через Vxlan1, удалённый VTEP — 3.3.3.3.
+
+<img width="996" height="830" alt="image" src="https://github.com/user-attachments/assets/1d97b2c1-6c97-4155-8b00-99b916389da2" />
+
 
 Leaf2
 
-<img width="659" height="734" alt="ping" src="https://github.com/user-attachments/assets/cf01e7d4-aa5a-4143-abcc-1e0e8a7bcff0" />
+Underlay eBGP-соседства с обоими Spine подняты.
+EVPN-соседства находятся в состоянии Established.
+Vxlan1 находится в состоянии up/up.
+VTEP-адрес Leaf2 — 2.2.2.2.
+VLAN20 сопоставлен с L2 VNI10020.
+Leaf2 участвует в общей EVPN VXLAN fabric.
+
+<img width="897" height="615" alt="image" src="https://github.com/user-attachments/assets/c11a44c6-6f3f-4751-8bae-0e47afd6ec03" />
 
 
 Leaf3
 
-<img width="606" height="705" alt="ping" src="https://github.com/user-attachments/assets/2ff1137f-a363-4e5e-bd67-fee686718170" />
+Underlay eBGP-соседства с обоими Spine подняты.
+EVPN-соседства находятся в состоянии Established.
+Vxlan1 находится в состоянии up/up.
+VTEP-адрес Leaf3 — 3.3.3.3.
+VLAN10 сопоставлен с L2 VNI10010.
+MAC Host3 изучен локально через Ethernet3.
+MAC Host1 изучен через Vxlan1, удалённый VTEP — 1.1.1.1.
+
+
+<img width="936" height="830" alt="image" src="https://github.com/user-attachments/assets/1045fbe0-bf3b-4e02-a7e9-59508b19e7ae" />
+
+Host1 
+Проверка клиентской связности
+
+Для проверки L2 VXLAN используются клиенты в одном VLAN и одной IP-подсети, но на разных Leaf:
+
+Host1 → Leaf1 → VLAN10 → 192.168.1.10/24
+Host3 → Leaf3 → VLAN10 → 192.168.1.30/24
+
+С Host1:
+
+ping 192.168.1.30
+<img width="624" height="270" alt="image" src="https://github.com/user-attachments/assets/f2749135-0304-4c97-8027-20acdc242154" />
+
+С Host3:
+
+ping 192.168.1.10
+
+Успешный ping с 0% packet loss подтверждает прохождение трафика по пути:
+
+Host1 → Leaf1 → VNI10010 → VXLAN Underlay →
+Leaf3 → VLAN10 → Host3
+<img width="548" height="196" alt="image" src="https://github.com/user-attachments/assets/eaf476ea-f24f-47f6-845a-a816239c3638" />
+
 
