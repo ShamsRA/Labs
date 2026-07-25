@@ -26,20 +26,27 @@
 Используется двухуровневая CLOS архитектура:
 <img width="1090" height="952" alt="image" src="https://github.com/user-attachments/assets/2f6b4843-0fa2-49b2-aa99-65f0459301d3" />
 
-Spine уровень:
-Spine1
-Spine2
+### Underlay
+Устройство	Loopback0	AS
+Spine1	11.11.11.11/32	65001
+Spine2	22.22.22.22/32	65002
+Leaf1	1.1.1.1/32	65101
+Leaf2	2.2.2.2/32	65102
+Leaf3	3.3.3.3/32	65103
+### Клиентские сети
+Клиент	Подключение	VLAN	L2VNI	IP-адрес	Шлюз
+Host1	Leaf1 Ethernet3	10	10010	192.168.1.10/24	192.168.1.1
+Host2	Leaf2 Ethernet3	20	10020	192.168.2.10/24	192.168.2.1
+Host3	Leaf3 Ethernet3	30	10030	192.168.3.10/24	192.168.3.1
+Host4	Leaf3 Ethernet4	40	10040	192.168.4.10/24	192.168.4.1
+### L3 Overlay
+Параметр	Значение
+VRF	TENANT
+L3VNI	5000
+Route Target	5000:5000
+Virtual-router MAC	00:1c:73:00:00:01
 
-Leaf уровень:
-Leaf1
-Leaf2
-Leaf3
-
-Хосты:
-Host1
-Host2
-Host3
-Host4
+Источник адресов и VNI: применённые конфигурации Leaf1–Leaf3 из текущей лабораторной работы.
 ## 3. План работ
 ### 3.1 Топология
 2×Spine (S1, S2), 3×Leaf (L1–L3), 4×Host.
