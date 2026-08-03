@@ -157,26 +157,30 @@ MAC Host1 изучен через Vxlan1, удалённый VTEP — 1.1.1.1.
 
 <img width="903" height="460" alt="image" src="https://github.com/user-attachments/assets/ecfcdd22-8b6a-4202-9a1e-b7c83c708ca7" />
 
-Host1 
-Проверка клиентской связности
+Проверка маршрутизации с Host1 
+<img width="517" height="671" alt="image" src="https://github.com/user-attachments/assets/ae36575b-2eca-49cf-a772-326dae4a2ff5" />
 
-Для проверки L2 VXLAN используются клиенты в одном VLAN и одной IP-подсети, но на разных Leaf:
 
-Host1 → Leaf1 → VLAN10 → 192.168.1.10/24
-Host3 → Leaf3 → VLAN10 → 192.168.1.30/24
+ping 192.168.2.10
+ping 192.168.3.10
+ping 192.168.4.10
 
-С Host1:
+С Host 2 
+<img width="516" height="657" alt="image" src="https://github.com/user-attachments/assets/4fd2592a-4124-40be-898c-c917b0d65756" />
 
-ping 192.168.1.30
+ping 192.168.1.10
+ping 192.168.3.10
+ping 192.168.4.10
 
 С Host3:
 
+<img width="531" height="496" alt="image" src="https://github.com/user-attachments/assets/32e5a63b-826e-4d86-811d-f245003dc203" />
+
 ping 192.168.1.10
+ping 192.168.2.10
+ping 192.168.4.10
 
-Успешный ping с 0% packet loss подтверждает прохождение трафика по пути:
 
-Host1 → Leaf1 → VNI10010 → VXLAN Underlay →
-Leaf3 → VLAN10 → Host3
 
 ### 6.2 Проверка EVPN Overlay
 
