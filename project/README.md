@@ -150,13 +150,16 @@ show ip route vrf TENANT
 
 №4 Проверка eBGP Underlay
 Leaf 1
+
 <img width="908" height="132" alt="image" src="https://github.com/user-attachments/assets/015ef83d-2cb8-4480-af19-afb50a0e48c8" />
 
 Leaf 2
+
 <img width="923" height="130" alt="image" src="https://github.com/user-attachments/assets/69089e02-5ea6-4fe7-8e8a-aa69e7d5f848" />
 
 
 Leaf 3
+
 <img width="924" height="130" alt="image" src="https://github.com/user-attachments/assets/d56081db-d508-4ad3-b83c-ffb54466ba88" />
 
 Leaf 1 POD2
@@ -174,6 +177,7 @@ Leaf 3 POD2
 #5 Проверка MP-BGP EVPN Overlay
 
 Leaf 1
+
 <img width="921" height="135" alt="image" src="https://github.com/user-attachments/assets/fd266354-270b-4237-9d71-713af1810069" />
 
 Leaf 2
@@ -181,9 +185,11 @@ Leaf 2
 <img width="934" height="124" alt="image" src="https://github.com/user-attachments/assets/b0204395-d49b-4165-a3d9-f9ec2c864cbc" />
 
 Leaf 3
+
 <img width="947" height="130" alt="image" src="https://github.com/user-attachments/assets/664f63a2-a507-4f33-b266-4a77390e4df9" />
 
 Leaf 1 POD2
+
 <img width="714" height="130" alt="image" src="https://github.com/user-attachments/assets/c2ecff57-39a5-41fc-8eda-729c396dba3c" />
 
 
@@ -192,57 +198,76 @@ Leaf 2 POD2
 <img width="728" height="131" alt="image" src="https://github.com/user-attachments/assets/519e209f-66f6-4a11-a909-5c70aa6c568b" />
 
 Leaf 3 POD2
+
 <img width="754" height="138" alt="image" src="https://github.com/user-attachments/assets/2dce7c01-1505-414f-bae8-d4c18653f8b5" />
 
 #6 Проверка EVPN-соседств на Spine
+
 Spine 1 
+
 <img width="884" height="142" alt="image" src="https://github.com/user-attachments/assets/c4648387-26d2-44d9-8728-dfd9835db0e7" />
 
 Spine 2
+
 <img width="894" height="152" alt="image" src="https://github.com/user-attachments/assets/30258bb9-fb07-4fbc-8291-1c0cfd9e5f00" />
 
 Spine 1 POD2
+
 <img width="887" height="149" alt="image" src="https://github.com/user-attachments/assets/aff9a7fc-19dc-4ba2-97af-db5653685d22" />
 
 Spine 2 POD2 
+
 <img width="700" height="157" alt="image" src="https://github.com/user-attachments/assets/cdb27eab-cf7c-428f-9324-35e2fe23ece6" />
 
 #7 Проверка типов EVPN-маршрутов
+
 Leaf 1
+
 <img width="787" height="518" alt="image" src="https://github.com/user-attachments/assets/6fff0dc0-a6b2-47be-925e-3dcf86c832a2" />
 
 Leaf 2
+
 <img width="798" height="508" alt="image" src="https://github.com/user-attachments/assets/374131e7-a0de-4b25-87b5-9d3706ada36e" />
 
 Leaf 3
+
 <img width="812" height="417" alt="image" src="https://github.com/user-attachments/assets/449f31c1-5959-44cc-9333-06390d440ddd" />
 
 Leaf 1 POD2
+
 <img width="745" height="371" alt="image" src="https://github.com/user-attachments/assets/3090391d-c9e2-4966-9cf7-775d92dd10e6" />
 
 Leaf 2 POD2
+
 <img width="781" height="394" alt="image" src="https://github.com/user-attachments/assets/811ae7b9-2609-4f08-8cde-181f03ac9a8a" />
 
 Leaf 3 POD2
+
 <img width="759" height="354" alt="image" src="https://github.com/user-attachments/assets/bfeb4e8a-cdd0-4479-b8ef-fb6839d1f44f" />
 
 #8 EVPN Route Type 5 — IP Prefix
 
 Leaf 1
+
 <img width="763" height="376" alt="image" src="https://github.com/user-attachments/assets/55a723c5-bfad-4de5-aaf0-32f1c43906ea" />
 
 Leaf 2
+
 <img width="775" height="375" alt="image" src="https://github.com/user-attachments/assets/7e15a03e-cd35-4cb1-8e4b-806aef9753cc" />
 
 Leaf 3
+
 <img width="798" height="339" alt="image" src="https://github.com/user-attachments/assets/3c25adb6-2e9c-4655-bd95-10f13350102c" />
 
 Leaf 1 POD2
+
 <img width="799" height="374" alt="image" src="https://github.com/user-attachments/assets/22a83515-9af4-468e-9ace-6ad97131ae15" />
 
 Leaf 2 POD2
+
 <img width="903" height="395" alt="image" src="https://github.com/user-attachments/assets/2e06b4cd-04cd-428c-9889-15e362a708e9" />
 
 Leaf 3 POD2
+
 <img width="810" height="357" alt="image" src="https://github.com/user-attachments/assets/1d337daa-2141-483a-bcfd-b3a447d62375" />
 
