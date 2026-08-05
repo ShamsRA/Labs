@@ -269,5 +269,59 @@ Leaf 2 POD2
 
 Leaf 3 POD2
 
-<img width="810" height="357" alt="image" src="https://github.com/user-attachments/assets/1d337daa-2141-483a-bcfd-b3a447d62375" />
+#9 DCI-R1 + ping
 
+<img width="976" height="1141" alt="image" src="https://github.com/user-attachments/assets/871d85e4-20cf-497e-befa-8d902191fb07" />
+
+#10 DCI-R2 + ping
+
+<img width="961" height="1263" alt="image" src="https://github.com/user-attachments/assets/7a70a330-6cc0-4bb3-b66a-1dcf026e41d0" />
+
+#11 Проверка POD1 → POD2
+
+С Host1 POD1 проверить все хосты POD2
+
+Исходный хост:
+
+Host1 POD1
+IP: 192.168.1.10
+VLAN 10
+Leaf1
+
+Выполнить на Host1:
+
+ping -c 4 192.168.4.10
+
+ping -c 4 192.168.5.10
+
+ping -c 4 192.168.4.20
+
+ping -c 4 192.168.6.10
+
+<img width="597" height="651" alt="image" src="https://github.com/user-attachments/assets/d3a5ae74-e80a-4142-b277-7e10b21de138" />
+
+#12 Проверка POD2 → POD1
+
+Исходный хост:
+
+Host1_P2
+IP: 192.168.4.10
+VLAN 40
+Leaf1_P2
+
+Выполнить на Host1_P2:
+
+ping -c 4 192.168.1.10
+
+ping -c 4 192.168.2.10
+
+ping -c 4 192.168.1.20
+
+ping -c 4 192.168.3.10
+
+<img width="550" height="492" alt="image" src="https://github.com/user-attachments/assets/bcbea583-1110-441f-a9fc-4e994b11a65e" />
+
+
+#13 Вывод
+
+С Host1 первого POD была подтверждена доступность всех четырёх клиентских хостов второго POD. В обратном направлении с Host1_P2 подтверждена доступность всех клиентских хостов первого POD. Успешное прохождение ICMP-трафика до хостов, подключённых к непограничным Leaf3 и Leaf3_P2, подтверждает передачу трафика через локальный EVPN-VXLAN Overlay, Border Leaf, L3 DCI и Overlay удалённого POD. Двусторонняя маршрутизация между всеми клиентскими подсетями работает корректно.
