@@ -48,7 +48,7 @@ IPv4 eBGP в VRF TENANT;
 * не передают MAC-маршруты;
 * передают только IPv4-префиксы VRF `TENANT`.
 
-## 7. Overlay и клиентские сети
+## 2.3 Overlay и клиентские сети
 
 ### Общие параметры
 
@@ -95,7 +95,6 @@ VLAN `40` размещён одновременно на **Leaf1_P2** и **Leaf3
 - Проверить отказ DCI-R1, DCI-R2, одного Spine и одного Underlay-линка.
 
 
-# 3 Порядок проверки
 ## 3.1 Этап 1. Underlay
 
 На каждом Leaf:
@@ -109,11 +108,13 @@ show bgp evpn summary
 На каждом Leaf должны быть две EVPN-сессии — к двум Spine своего POD.
 
 ## 3.3 Этап 3. VXLAN
+
 show interfaces Vxlan1
 show vxlan vtep
 show vxlan vni
 show vxlan config-sanity detail
-Этап 4. L2VNI
+
+## 3.4 Этап 4. L2VNI
 
 С Host1:
 
@@ -125,7 +126,8 @@ ping 192.168.1.20
 
 show bgp evpn route-type mac-ip
 show vxlan address-table
-Этап 5. L3VNI внутри POD
+
+## Этап 3.5. L3VNI внутри POD
 
 С Host1:
 
@@ -136,7 +138,8 @@ ping 192.168.3.10
 
 show ip route vrf TENANT
 show bgp evpn route-type ip-prefix ipv4
-Этап 6. DCI BGP
+
+## 3.6 Этап 6. DCI BGP
 
 На Leaf1 и Leaf2:
 
@@ -148,7 +151,8 @@ show ip bgp vrf TENANT summary
 show ip bgp vrf TENANT
 show ip route vrf TENANT
 
-№4 Проверка eBGP Underlay
+# 4 Проверка eBGP Underlay
+
 Leaf 1
 
 <img width="908" height="132" alt="image" src="https://github.com/user-attachments/assets/015ef83d-2cb8-4480-af19-afb50a0e48c8" />
@@ -174,7 +178,7 @@ Leaf 3 POD2
 
 <img width="761" height="131" alt="image" src="https://github.com/user-attachments/assets/e45a6dd7-5807-44d3-89df-ccc0035fb131" />
 
-#5 Проверка MP-BGP EVPN Overlay
+# 5 Проверка MP-BGP EVPN Overlay
 
 Leaf 1
 
@@ -201,7 +205,7 @@ Leaf 3 POD2
 
 <img width="754" height="138" alt="image" src="https://github.com/user-attachments/assets/2dce7c01-1505-414f-bae8-d4c18653f8b5" />
 
-#6 Проверка EVPN-соседств на Spine
+# 6 Проверка EVPN-соседств на Spine
 
 Spine 1 
 
@@ -219,7 +223,7 @@ Spine 2 POD2
 
 <img width="700" height="157" alt="image" src="https://github.com/user-attachments/assets/cdb27eab-cf7c-428f-9324-35e2fe23ece6" />
 
-#7 Проверка типов EVPN-маршрутов
+# 7 Проверка типов EVPN-маршрутов
 
 Leaf 1
 
@@ -245,7 +249,7 @@ Leaf 3 POD2
 
 <img width="759" height="354" alt="image" src="https://github.com/user-attachments/assets/bfeb4e8a-cdd0-4479-b8ef-fb6839d1f44f" />
 
-#8 EVPN Route Type 5 — IP Prefix
+# 8 EVPN Route Type 5 — IP Prefix
 
 Leaf 1
 
@@ -269,15 +273,15 @@ Leaf 2 POD2
 
 Leaf 3 POD2
 
-#9 DCI-R1 + ping
+# 9 DCI-R1 + ping
 
 <img width="976" height="1141" alt="image" src="https://github.com/user-attachments/assets/871d85e4-20cf-497e-befa-8d902191fb07" />
 
-#10 DCI-R2 + ping
+# 10 DCI-R2 + ping
 
 <img width="961" height="1263" alt="image" src="https://github.com/user-attachments/assets/7a70a330-6cc0-4bb3-b66a-1dcf026e41d0" />
 
-#11 Проверка POD1 → POD2
+# 11 Проверка POD1 → POD2
 
 С Host1 POD1 проверить все хосты POD2
 
@@ -300,7 +304,7 @@ ping -c 4 192.168.6.10
 
 <img width="597" height="651" alt="image" src="https://github.com/user-attachments/assets/d3a5ae74-e80a-4142-b277-7e10b21de138" />
 
-#12 Проверка POD2 → POD1
+# 12 Проверка POD2 → POD1
 
 Исходный хост:
 
@@ -322,6 +326,6 @@ ping -c 4 192.168.3.10
 <img width="550" height="492" alt="image" src="https://github.com/user-attachments/assets/bcbea583-1110-441f-a9fc-4e994b11a65e" />
 
 
-#13 Вывод
+# 13 Вывод
 
 С Host1 первого POD была подтверждена доступность всех четырёх клиентских хостов второго POD. В обратном направлении с Host1_P2 подтверждена доступность всех клиентских хостов первого POD. Успешное прохождение ICMP-трафика до хостов, подключённых к непограничным Leaf3 и Leaf3_P2, подтверждает передачу трафика через локальный EVPN-VXLAN Overlay, Border Leaf, L3 DCI и Overlay удалённого POD. Двусторонняя маршрутизация между всеми клиентскими подсетями работает корректно.
